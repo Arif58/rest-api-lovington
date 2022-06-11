@@ -46,6 +46,9 @@ class CategoryController extends Controller
 
         try {
             $category = Category::create($request->all());
+            // $category = new Category;
+            // $category->category_name = $request->category_name;
+            // $category->photo_url = $request->file('photo_url')->store('po');
             $response = [
                 'message' => 'Category Created',
                 'categories' => $category
@@ -135,3 +138,4 @@ class CategoryController extends Controller
         }
     }
 }
+

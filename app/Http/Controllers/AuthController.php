@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Redis;
@@ -65,6 +66,16 @@ class AuthController extends Controller
     {
         $user = User::find(Auth::user()->id);
 		return response()->json($user, 200);    
+    }
+
+    public function index()
+    {
+        $users = User::all();
+        $response = [
+            'message' => 'all users',
+            'users' => $users
+        ];
+        return response()->json($response, Response::HTTP_OK);
     }
 
     public function logout()

@@ -48,6 +48,7 @@ class ProductController extends Controller
             'product_name' => ['required'],
             'desc' => ['required'],
             'photo_url' => ['required'],
+            'price' => ['required']
         ]);
 
         if ($validator->fails()) {
@@ -112,6 +113,7 @@ class ProductController extends Controller
             'product_name' => ['required'],
             'desc' => ['required'],
             'photo_url' => ['required'],
+            'price' => ['required']
         ]);
 
         if ($validator->fails()) {

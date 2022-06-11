@@ -20,17 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 //API route for login user
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/users', [AuthController::class, 'index']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/profile', [AuthController::class, 'profile']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-
 
 Route::get('/category', [CategoryController::class, 'index']); //menampilkan seluruh data
 Route::post('/category', [CategoryController::class, 'store']); //menambahkan data
@@ -48,5 +44,5 @@ Route::get('/orders', [OrdersController::class, 'index']);
 Route::post('/orders', [OrdersController::class, 'store']);
 Route::get('/order-user/{user_id}', [OrdersController::class, 'showOrderUser']);
 Route::get('/orders/{ordersId}', [OrdersController::class, 'show']);
-Route::put('/orders/{ordersId}', [OrdersController::class, 'update']);
+// Route::put('/orders/{ordersId}', [OrdersController::class, 'update']);
 Route::delete('/orders/{ordersId}', [OrdersController::class, 'destroy']);
