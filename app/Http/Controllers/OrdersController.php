@@ -46,7 +46,9 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'user_id' => ['required'],
+            // 'user_id' => ['required'],
+            'nama_pemesan' => ['required'],
+            'no_hp' => ['required'],
             'product_id' => ['required'],
             'address' => ['required'],
             'quantity' => ['required'],
@@ -114,35 +116,35 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $ordersId)
-    {
-        $orders = Orders::where('order_id', $ordersId);
+    // public function update(Request $request, $ordersId)
+    // {
+    //     $orders = Orders::where('order_id', $ordersId);
 
-        $validator = Validator::make($request->all(), [
-            'user_id' => ['required'],
-            'product_id' => ['required'],
-            'address' => ['required'],
-            'quantity' => ['required'],
-        ]);
+    //     $validator = Validator::make($request->all(), [
+    //         'user_id' => ['required'],
+    //         'product_id' => ['required'],
+    //         'address' => ['required'],
+    //         'quantity' => ['required'],
+    //     ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
+    //     if ($validator->fails()) {
+    //         return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
+    //     }
 
-        try {
-            $orders->update($request->all());
-            $response = [
-                'message' => 'Order Created',
-                'orders' => $orders
-            ];
-            return response()->json($response, Response::HTTP_CREATED);
-        } catch (QueryException $e) {
-            return response()->json([
-                'message' => 'Failed' . $e->errorInfo
-            ]);
-        }
+    //     try {
+    //         $orders->update($request->all());
+    //         $response = [
+    //             'message' => 'Order Created',
+    //             'orders' => $orders
+    //         ];
+    //         return response()->json($response, Response::HTTP_CREATED);
+    //     } catch (QueryException $e) {
+    //         return response()->json([
+    //             'message' => 'Failed' . $e->errorInfo
+    //         ]);
+    //     }
 
-    }
+    // }
 
     /**
      * Remove the specified resource from storage.

@@ -15,8 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nama_pemesan');
+            $table->string('no_hp');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('product_id')->on('product')->onDelete('cascade');
             $table->string('address');

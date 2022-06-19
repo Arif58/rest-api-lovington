@@ -17,22 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //API route for register new user
-Route::post('/register', [AuthController::class, 'register']);
-//API route for login user
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/users', [AuthController::class, 'index']);
+// Route::post('/register', [AuthController::class, 'register']);
+// //API route for login user
+// Route::post('/login', [AuthController::class, 'login']);
+// Route::get('/users', [AuthController::class, 'index']);
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/profile', [AuthController::class, 'profile']);
+// Route::group(['middleware' => ['auth:sanctum']], function () {
+//     Route::get('/profile', [AuthController::class, 'profile']);
 
-    Route::post('/logout', [AuthController::class, 'logout']);
-});
+//     Route::post('/logout', [AuthController::class, 'logout']);
+// });
 
-Route::get('/category', [CategoryController::class, 'index']); //menampilkan seluruh data
-Route::post('/category', [CategoryController::class, 'store']); //menambahkan data
-Route::get('/category/{categoryId}', [CategoryController::class, 'show']);
-Route::put('/category/{categoryId}', [CategoryController::class, 'update']);
-Route::delete('/category/{categoryId}', [CategoryController::class, 'destroy']);
+// Route::get('/category', [CategoryController::class, 'index']); //menampilkan seluruh data
+// Route::post('/category', [CategoryController::class, 'store']); //menambahkan data
+// Route::get('/category/{categoryId}', [CategoryController::class, 'show']);
+// Route::put('/category/{categoryId}', [CategoryController::class, 'update']);
+// Route::delete('/category/{categoryId}', [CategoryController::class, 'destroy']);
 
 Route::get('/product', [ProductController::class, 'index']); //menampilkan seluruh data
 Route::post('/product', [ProductController::class, 'store']); //membuat data
